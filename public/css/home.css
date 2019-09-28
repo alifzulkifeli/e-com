@@ -1,0 +1,159 @@
+.btn-ic{
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: #f1f1f1;
+  margin: 10px;
+  border-radius: 30%;
+  box-shadow: 0 5px 15px -5px #00000070;
+  color: #3498db;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  
+}
+.btn-ic i{
+  line-height: 40px;
+  font-size: 26px;
+  transition: 0.2s linear;
+  left: 20px;
+}
+.btn-ic:hover i{
+  transform: scale(1.3);
+  color: #f1f1f1;
+}
+.btn-ic::before{
+  content: "";
+  position: absolute;
+  width: 90%;
+  height: 190%;
+  background: #daabab;
+  transform: rotate(45deg);
+  left: -110%;
+  top: 90%;
+}
+.btn-ic:hover::before{
+  animation: aaa 0.7s 1;
+  top: -10%;
+  left: -10%;
+}
+@keyframes aaa {
+  0%{
+    left: -110%;
+    top: 90%;
+  }50%{
+    left: 10%;
+    top: -30%;
+  }100%{
+    top: -10%;
+    left: -10%;
+  }
+}
+
+/******************login navigation button**********************/
+
+.btn-info {
+  text-align: center;
+  font-family: Raleway-SemiBold;
+  font-size: 33px;
+  color: rgba(91, 192, 222, 0.75);
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgba(91, 192, 222, 0.75);
+  border-radius: 40px;
+  background: transparent;
+  transition: all 0.3s ease 0s;
+  margin: 12px;
+}
+
+.btn-info:hover {
+  color: #FFF;
+  background: rgba(91, 192, 222, 0.75);
+  border: 2px solid rgba(91, 192, 222, 0.75);
+}
+
+
+/******************middle**********************/
+
+#middle{
+  padding: 100px;
+  text-align: center;
+ 
+}
+
+.up-logo{
+  height: 50px;
+  margin: 15px;
+}
+
+.raku-logo{
+  height: 110px;
+}
+
+.search {
+  height: 60px;
+  width: 70%;
+
+}
+
+
+.searchTerm {
+  width: 70%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 32px;
+  border-radius: 5px 0 0 5px;
+  position: relative;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 32px;
+  border: 1px solid lightblue;
+  background: lightblue;
+  color: #fff;
+  cursor: pointer;
+  
+}
+
+/******************categorie**********************/
+
+#categories{
+  margin: 0;
+  padding: 80px;
+  text-align: center;
+  background: lightblue;
+  height: 400px;
+  text-align: center;
+}
+
+
+.categorie{
+
+  height:80px;
+
+}
+
+.bord{
+  border-style: solid;
+  display: inline-block;
+  border-radius: 20%
+}
+
+/******************bottom**********************/
+
+#bottom{
+  padding: 70px;
+  text-align: center;
+}
+
+.info{
+  border-style: solid;
+  
+  margin: 30px;
+}

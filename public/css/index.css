@@ -1,0 +1,125 @@
+body{
+  padding: 0;
+  margin: 0;
+}
+
+/********************navigation icon********************/
+nav{
+  width: 100%;
+  text-align: center;
+}
+
+
+
+.btn-ic{
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  background: #f1f1f1;
+  margin: 10px;
+  border-radius: 30%;
+  box-shadow: 0 5px 15px -5px #00000070;
+  color: #3498db;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  
+}
+.btn-ic i{
+  line-height: 70px;
+  font-size: 26px;
+  transition: 0.2s linear;
+  left: 20px;
+}
+.btn-ic:hover i{
+  transform: scale(1.3);
+  color: #f1f1f1;
+}
+.btn-ic::before{
+  content: "";
+  position: absolute;
+  width: 90%;
+  height: 190%;
+  background: #daabab;
+  transform: rotate(45deg);
+  left: -110%;
+  top: 90%;
+}
+.btn-ic:hover::before{
+  animation: aaa 0.7s 1;
+  top: -10%;
+  left: -10%;
+}
+@keyframes aaa {
+  0%{
+    left: -110%;
+    top: 90%;
+  }50%{
+    left: 10%;
+    top: -30%;
+  }100%{
+    top: -10%;
+    left: -10%;
+  }
+}
+
+/******************login navigation button**********************/
+
+.btn-info {
+  text-align: center;
+  font-family: Raleway-SemiBold;
+  font-size: 33px;
+  color: rgba(91, 192, 222, 0.75);
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgba(91, 192, 222, 0.75);
+  border-radius: 40px;
+  background: transparent;
+  transition: all 0.3s ease 0s;
+  margin: 12px;
+}
+
+.btn-info:hover {
+  color: #FFF;
+  background: rgba(91, 192, 222, 0.75);
+  border: 2px solid rgba(91, 192, 222, 0.75);
+}
+/******************middle content**********************/
+
+.middle{
+  text-align: center;
+  margin: 80px 0;
+}
+
+.h3-mid{
+  margin: 50px 0;
+}
+.h2-mid{
+  margin: 50px 0;
+}
+.p-mid{
+  margin: 50px 0;
+}
+
+.middle-img{
+  height: 5rem;
+}
+
+
+
+table.customTable {
+  display: inline-block;
+  text-align:center;
+}
+h5{
+  margin: 80px;
+  color: red;
+}
+  
+.android{
+  height:  80px
+}
+.ios{
+  height:  80px
+}
+ 
