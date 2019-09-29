@@ -36,11 +36,12 @@ app.use(passport.session());
 mongoose.connect("mongodb://localhost:27017/userDB",{useNewUrlParser:true, useUnifiedTopology: true});
 mongoose.set('useCreateIndex', true);
 
+
+
 const userSchema = new mongoose.Schema({
     email: String,
     password: String,
-    ggleId: String,
-
+    userId: String,
     username: String,  
     location: String,
     phone_no: String
@@ -48,6 +49,13 @@ const userSchema = new mongoose.Schema({
 
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
+userSchema.statics.isValidUserPassword = function(username, password, done) {
+    var criteria = (username.indexOf('@') === -1) ? {username: username} : {email: username};
+    this.findOne(criteria, function(err, user){
+        // All the same...
+        console.log(user);
+    });
+};
 
 const User = new mongoose.model("User",userSchema);
 /*----------------------------------------------*/
@@ -73,7 +81,7 @@ passport.use(new GoogleStrategy({
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
   },
   function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ ggleId: profile.id , username:profile.displayName}, function (err, user) {
+    User.findOrCreate({ userId: profile.id , username:profile.displayName}, function (err, user) {
       return cb(err, user);
     });
   }
@@ -85,7 +93,7 @@ passport.use(new FacebookStrategy({
     callbackURL: "http://localhost:3000/auth/facebook/jombeli"
   },
   function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ ggleId: profile.id ,username:profile.displayName}, function (err, user) {
+    User.findOrCreate({ userId: profile.id ,username:profile.displayName}, function (err, user) {
     return cb(err, user);
     });
   }
@@ -174,10 +182,12 @@ app.get("/logout", function (req, res) {
         req.logout();
         res.redirect('/');
     });
-})
+});
+
+
 
 app.post("/register",function (req,res) {  
-    User.register({username:req.body.username , location:req.body.location}, req.body.password, function(err, user) {
+    User.register({username:req.body.username , email:req.body.email}, req.body.password, function(err, user) {
         if (err) { 
             console.log(err); 
             res.redirect('/register') 
@@ -190,6 +200,9 @@ app.post("/register",function (req,res) {
    
 });
 
+
+
+
 app.post("/login", function (req,res) {        
     const user = new User({
         username : req.body.username,
@@ -201,7 +214,7 @@ app.post("/login", function (req,res) {
             console.log(err);
         }else{
             passport.authenticate("local")(req,res, function () {
-            res.redirect("/");
+                res.redirect("/");
             });
         }
     });
